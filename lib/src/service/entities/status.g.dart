@@ -70,6 +70,11 @@ _$StatusImpl _$$StatusImplFromJson(Map json) => $checkedCreate(
               (v) => (v as List<dynamic>)
                   .map((e) => Tag.fromJson(Map<String, Object?>.from(e as Map)))
                   .toList()),
+          card: $checkedConvert(
+              'card',
+              (v) => v == null
+                  ? null
+                  : PreviewCard.fromJson(Map<String, Object?>.from(v as Map))),
           createdAt:
               $checkedConvert('created_at', (v) => DateTime.parse(v as String)),
         );
@@ -131,6 +136,7 @@ Map<String, dynamic> _$$StatusImplToJson(_$StatusImpl instance) {
       instance.mediaAttachments.map((e) => e.toJson()).toList();
   val['emojis'] = instance.emojis.map((e) => e.toJson()).toList();
   val['tags'] = instance.tags.map((e) => e.toJson()).toList();
+  writeNotNull('card', instance.card?.toJson());
   val['created_at'] = instance.createdAt.toIso8601String();
   return val;
 }

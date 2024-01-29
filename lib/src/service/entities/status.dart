@@ -14,6 +14,7 @@ import 'application.dart';
 import 'emoji.dart';
 import 'media_attachment.dart';
 import 'poll.dart';
+import 'preview_card.dart';
 import 'tag.dart';
 
 // 🌎 Project imports:
@@ -103,6 +104,9 @@ class Status with _$Status {
 
     /// Hashtags used within the status content.
     required List<Tag> tags,
+
+    /// Card attached to the status, if applicable.
+    required PreviewCard? card,
 
     /// The date when this status was created.
     required DateTime createdAt,

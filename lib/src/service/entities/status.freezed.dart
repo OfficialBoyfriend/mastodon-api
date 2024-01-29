@@ -106,6 +106,9 @@ mixin _$Status {
   /// Hashtags used within the status content.
   List<Tag> get tags => throw _privateConstructorUsedError;
 
+  /// Card attached to the status, if applicable.
+  PreviewCard? get card => throw _privateConstructorUsedError;
+
   /// The date when this status was created.
   DateTime get createdAt => throw _privateConstructorUsedError;
 
@@ -146,12 +149,14 @@ abstract class $StatusCopyWith<$Res> {
       List<MediaAttachment> mediaAttachments,
       List<Emoji> emojis,
       List<Tag> tags,
+      PreviewCard? card,
       DateTime createdAt});
 
   $AccountCopyWith<$Res> get account;
   $ApplicationCopyWith<$Res>? get application;
   $PollCopyWith<$Res>? get poll;
   $StatusCopyWith<$Res>? get reblog;
+  $PreviewCardCopyWith<$Res>? get card;
 }
 
 /// @nodoc
@@ -193,6 +198,7 @@ class _$StatusCopyWithImpl<$Res, $Val extends Status>
     Object? mediaAttachments = null,
     Object? emojis = null,
     Object? tags = null,
+    Object? card = freezed,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
@@ -300,6 +306,10 @@ class _$StatusCopyWithImpl<$Res, $Val extends Status>
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      card: freezed == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as PreviewCard?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -350,6 +360,18 @@ class _$StatusCopyWithImpl<$Res, $Val extends Status>
       return _then(_value.copyWith(reblog: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PreviewCardCopyWith<$Res>? get card {
+    if (_value.card == null) {
+      return null;
+    }
+
+    return $PreviewCardCopyWith<$Res>(_value.card!, (value) {
+      return _then(_value.copyWith(card: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -386,6 +408,7 @@ abstract class _$$StatusImplCopyWith<$Res> implements $StatusCopyWith<$Res> {
       List<MediaAttachment> mediaAttachments,
       List<Emoji> emojis,
       List<Tag> tags,
+      PreviewCard? card,
       DateTime createdAt});
 
   @override
@@ -396,6 +419,8 @@ abstract class _$$StatusImplCopyWith<$Res> implements $StatusCopyWith<$Res> {
   $PollCopyWith<$Res>? get poll;
   @override
   $StatusCopyWith<$Res>? get reblog;
+  @override
+  $PreviewCardCopyWith<$Res>? get card;
 }
 
 /// @nodoc
@@ -435,6 +460,7 @@ class __$$StatusImplCopyWithImpl<$Res>
     Object? mediaAttachments = null,
     Object? emojis = null,
     Object? tags = null,
+    Object? card = freezed,
     Object? createdAt = null,
   }) {
     return _then(_$StatusImpl(
@@ -542,6 +568,10 @@ class __$$StatusImplCopyWithImpl<$Res>
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<Tag>,
+      card: freezed == card
+          ? _value.card
+          : card // ignore: cast_nullable_to_non_nullable
+              as PreviewCard?,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -581,6 +611,7 @@ class _$StatusImpl implements _Status {
       required final List<MediaAttachment> mediaAttachments,
       required final List<Emoji> emojis,
       required final List<Tag> tags,
+      required this.card,
       required this.createdAt})
       : _mediaAttachments = mediaAttachments,
         _emojis = emojis,
@@ -722,13 +753,17 @@ class _$StatusImpl implements _Status {
     return EqualUnmodifiableListView(_tags);
   }
 
+  /// Card attached to the status, if applicable.
+  @override
+  final PreviewCard? card;
+
   /// The date when this status was created.
   @override
   final DateTime createdAt;
 
   @override
   String toString() {
-    return 'Status(id: $id, url: $url, uri: $uri, content: $content, spoilerText: $spoilerText, visibility: $visibility, favouritesCount: $favouritesCount, repliesCount: $repliesCount, reblogsCount: $reblogsCount, language: $language, inReplyToId: $inReplyToId, inReplyToAccountId: $inReplyToAccountId, isFavourited: $isFavourited, isReblogged: $isReblogged, isMuted: $isMuted, isBookmarked: $isBookmarked, isSensitive: $isSensitive, isPinned: $isPinned, lastStatusAt: $lastStatusAt, account: $account, application: $application, poll: $poll, reblog: $reblog, mediaAttachments: $mediaAttachments, emojis: $emojis, tags: $tags, createdAt: $createdAt)';
+    return 'Status(id: $id, url: $url, uri: $uri, content: $content, spoilerText: $spoilerText, visibility: $visibility, favouritesCount: $favouritesCount, repliesCount: $repliesCount, reblogsCount: $reblogsCount, language: $language, inReplyToId: $inReplyToId, inReplyToAccountId: $inReplyToAccountId, isFavourited: $isFavourited, isReblogged: $isReblogged, isMuted: $isMuted, isBookmarked: $isBookmarked, isSensitive: $isSensitive, isPinned: $isPinned, lastStatusAt: $lastStatusAt, account: $account, application: $application, poll: $poll, reblog: $reblog, mediaAttachments: $mediaAttachments, emojis: $emojis, tags: $tags, card: $card, createdAt: $createdAt)';
   }
 
   @override
@@ -778,6 +813,7 @@ class _$StatusImpl implements _Status {
                 .equals(other._mediaAttachments, _mediaAttachments) &&
             const DeepCollectionEquality().equals(other._emojis, _emojis) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
+            (identical(other.card, card) || other.card == card) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt));
   }
@@ -812,6 +848,7 @@ class _$StatusImpl implements _Status {
         const DeepCollectionEquality().hash(_mediaAttachments),
         const DeepCollectionEquality().hash(_emojis),
         const DeepCollectionEquality().hash(_tags),
+        card,
         createdAt
       ]);
 
@@ -857,6 +894,7 @@ abstract class _Status implements Status {
       required final List<MediaAttachment> mediaAttachments,
       required final List<Emoji> emojis,
       required final List<Tag> tags,
+      required final PreviewCard? card,
       required final DateTime createdAt}) = _$StatusImpl;
 
   factory _Status.fromJson(Map<String, dynamic> json) = _$StatusImpl.fromJson;
@@ -972,6 +1010,10 @@ abstract class _Status implements Status {
 
   /// Hashtags used within the status content.
   List<Tag> get tags;
+  @override
+
+  /// Card attached to the status, if applicable.
+  PreviewCard? get card;
   @override
 
   /// The date when this status was created.
