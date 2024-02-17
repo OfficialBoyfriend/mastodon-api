@@ -25,7 +25,7 @@ _$V2InstanceImpl _$$V2InstanceImplFromJson(Map json) => $checkedCreate(
           languages: $checkedConvert(
               'languages',
               (v) => (v as List<dynamic>)
-                  .map((e) => $enumDecode(_$LanguageEnumMap, e))
+                  .map((e) => Language.fromJson(e as String))
                   .toList()),
           thumbnail: $checkedConvert(
               'thumbnail',

@@ -32,7 +32,7 @@ _$RelationshipImpl _$$RelationshipImplFromJson(Map json) => $checkedCreate(
           languages: $checkedConvert(
               'languages',
               (v) => (v as List<dynamic>?)
-                  ?.map((e) => $enumDecode(_$LanguageEnumMap, e))
+                  ?.map((e) => Language.fromJson(e as String))
                   .toList()),
         );
         return val;

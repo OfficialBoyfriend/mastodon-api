@@ -783,4 +783,10 @@ enum Language implements Serializable {
       'The code [$code] is not supported.',
     );
   }
+
+  /// Impl fromJson method
+  ///
+  /// This method is used to convert the JSON object to a [Language] instance.
+  ///
+  factory Language.fromJson(final String json) => valueOf(json);
 }

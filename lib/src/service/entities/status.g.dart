@@ -23,8 +23,8 @@ _$StatusImpl _$$StatusImplFromJson(Map json) => $checkedCreate(
           favouritesCount: $checkedConvert('favourites_count', (v) => v as int),
           repliesCount: $checkedConvert('replies_count', (v) => v as int),
           reblogsCount: $checkedConvert('reblogs_count', (v) => v as int),
-          language: $checkedConvert(
-              'language', (v) => $enumDecodeNullable(_$LanguageEnumMap, v)),
+          language: $checkedConvert('language',
+              (v) => v == null ? null : Language.fromJson(v as String)),
           inReplyToId: $checkedConvert('in_reply_to_id', (v) => v as String?),
           inReplyToAccountId:
               $checkedConvert('in_reply_to_account_id', (v) => v as String?),

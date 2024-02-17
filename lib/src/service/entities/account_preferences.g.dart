@@ -19,7 +19,7 @@ _$AccountPreferencesImpl _$$AccountPreferencesImplFromJson(Map json) =>
           isDefaultSensitive:
               $checkedConvert('posting:default:sensitive', (v) => v as bool),
           defaultLanguage: $checkedConvert('posting:default:language',
-              (v) => $enumDecode(_$LanguageEnumMap, v)),
+              (v) => Language.fromJson(v as String)),
           expandMediaSetting: $checkedConvert('reading:expand:media',
               (v) => $enumDecode(_$DisplayMediaSettingEnumMap, v)),
           hasExpandSpoilers:
@@ -53,6 +53,12 @@ const _$VisibilityEnumMap = {
   Visibility.unlisted: 'unlisted',
   Visibility.private: 'private',
   Visibility.direct: 'direct',
+};
+
+const _$DisplayMediaSettingEnumMap = {
+  DisplayMediaSetting.none: 'default',
+  DisplayMediaSetting.showAll: 'show_all',
+  DisplayMediaSetting.hideAll: 'hide_all',
 };
 
 const _$LanguageEnumMap = {
@@ -243,10 +249,4 @@ const _$LanguageEnumMap = {
   Language.traditionalChineseTaiwan: 'zh-TW',
   Language.yueChinese: 'zh-YUE',
   Language.zulu: 'zu',
-};
-
-const _$DisplayMediaSettingEnumMap = {
-  DisplayMediaSetting.none: 'default',
-  DisplayMediaSetting.showAll: 'show_all',
-  DisplayMediaSetting.hideAll: 'hide_all',
 };

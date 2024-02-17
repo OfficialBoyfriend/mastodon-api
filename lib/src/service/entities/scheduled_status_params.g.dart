@@ -26,8 +26,8 @@ _$ScheduledStatusParamsImpl _$$ScheduledStatusParamsImplFromJson(Map json) =>
               (v) => (v as List<dynamic>?)?.map((e) => e as String).toList()),
           inReplyToStatusId:
               $checkedConvert('in_reply_to_id', (v) => v as String?),
-          language: $checkedConvert(
-              'language', (v) => $enumDecodeNullable(_$LanguageEnumMap, v)),
+          language: $checkedConvert('language',
+              (v) => v == null ? null : Language.fromJson(v as String)),
           visibility: $checkedConvert(
               'visibility', (v) => $enumDecodeNullable(_$VisibilityEnumMap, v)),
           idempotency: $checkedConvert('idempotency', (v) => v as String?),
@@ -65,6 +65,13 @@ Map<String, dynamic> _$$ScheduledStatusParamsImplToJson(
   writeNotNull('sensitive', instance.isSensitive);
   return val;
 }
+
+const _$VisibilityEnumMap = {
+  Visibility.public: 'public',
+  Visibility.unlisted: 'unlisted',
+  Visibility.private: 'private',
+  Visibility.direct: 'direct',
+};
 
 const _$LanguageEnumMap = {
   Language.afar: 'aa',
@@ -254,11 +261,4 @@ const _$LanguageEnumMap = {
   Language.traditionalChineseTaiwan: 'zh-TW',
   Language.yueChinese: 'zh-YUE',
   Language.zulu: 'zu',
-};
-
-const _$VisibilityEnumMap = {
-  Visibility.public: 'public',
-  Visibility.unlisted: 'unlisted',
-  Visibility.private: 'private',
-  Visibility.direct: 'direct',
 };
