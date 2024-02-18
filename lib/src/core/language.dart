@@ -771,8 +771,13 @@ enum Language implements Serializable {
 
   /// Returns the [Language] associated with [code].
   static Language valueOf(final String code) {
-    final $code = code.toLowerCase();
+    for (final language in values) {
+      if (language.code == code) {
+        return language;
+      }
+    }
 
+    final $code = code.toLowerCase();
     for (final language in values) {
       if (language.code == $code) {
         return language;
