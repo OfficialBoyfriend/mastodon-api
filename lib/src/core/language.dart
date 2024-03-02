@@ -622,6 +622,10 @@ enum Language implements Serializable {
   @JsonValue('sv')
   swedish('sv', 'Svenska'),
 
+  /// `sco`
+  @JsonValue('sco')
+  sco('sco', 'Scots'),
+
   /// `sw`
   @JsonValue('sw')
   swahili('sw', 'Kiswahili'),

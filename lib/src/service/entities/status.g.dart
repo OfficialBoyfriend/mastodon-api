@@ -302,6 +302,7 @@ const _$LanguageEnumMap = {
   Language.southernSotho: 'st',
   Language.sundanese: 'su',
   Language.swedish: 'sv',
+  Language.sco: 'sco',
   Language.swahili: 'sw',
   Language.tamil: 'ta',
   Language.telugu: 'te',
